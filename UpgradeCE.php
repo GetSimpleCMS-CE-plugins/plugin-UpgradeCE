@@ -40,23 +40,23 @@ function downloader() {
 		<p>'.i18n_r("UpgradeCE/lang_Description").'</p>';
 		
 		include(GSADMININCPATH ."configuration.php");
-		echo  '<p class="w3-padding w3-light-green">'.i18n_r('UpgradeCE/lang_Installed_Version') .': <span style="font-weight:600">'.$site_full_name . ' &ndash; '. $site_version_no .'</span>.</p>';
+		echo  '<p class="w3-padding w3-light-green">'.i18n_r('UpgradeCE/lang_Installed_Version') .': <span style="font-weight:600">'.$site_full_name. ' &ndash; '. $site_version_no.'</span>.</p>';
 		
 		if(isset($_GET['ok'])){
 			echo '
 			<div class="w3-panel w3-green w3-round w3-padding-large"> 
-			<meta http-equiv="refresh" content="18; url=health-check.php">
-			<p>'.i18n_r("UpgradeCE/lang_Icon").' Installing... <span id="countdown" style="font-weight:600"></span></p>
+			<meta http-equiv="refresh" content="14; url=health-check.php">
+			<p>'.i18n_r("UpgradeCE/lang_Icon").' '.i18n_r('UpgradeCE/lang_Installing').' <span id="countdown" style="font-weight:600; color:red"></span></p>
 			</div>
 			
 			<script>
-				var timeleft = 15;
+				var timeleft = 11;
 				var downloadTimer = setInterval(function(){
 				  if(timeleft <= 0){
 					clearInterval(downloadTimer);
-					document.getElementById("countdown").innerHTML = "Finished... Redirecting...";
+					document.getElementById("countdown").innerHTML = "'.i18n_r('UpgradeCE/lang_Finished').'";
 				  } else {
-					document.getElementById("countdown").innerHTML = timeleft + " seconds remaining";
+					document.getElementById("countdown").innerHTML = timeleft + " '.i18n_r('UpgradeCE/lang_Seconds_remaining').'";
 				  }
 				  timeleft -= 1;
 				}, 1000);
@@ -67,11 +67,11 @@ function downloader() {
 		echo '
 		<hr>
 		<div class="w3-panel w3-leftbar w3-pale-yellow">
-			<h4 class="w3-text-red"><svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 16 16"><path fill="currentColor" fill-rule="evenodd" d="M8.429 2.746a.5.5 0 0 0-.858 0L1.58 12.743a.5.5 0 0 0 .429.757h11.984a.5.5 0 0 0 .43-.757zm-2.144-.77C7.06.68 8.939.68 9.715 1.975l5.993 9.996c.799 1.333-.161 3.028-1.716 3.028H2.008C.453 15-.507 13.305.292 11.972l5.993-9.997ZM9 11.5a1 1 0 1 1-2 0a1 1 0 0 1 2 0m-.25-5.75a.75.75 0 0 0-1.5 0v3a.75.75 0 0 0 1.5 0z" clip-rule="evenodd"/></svg><span style="font-weight:600"> '.i18n_r('UpgradeCE/lang_Installed_Version') .':</span></h4>
+			<h4 class="w3-text-red"><svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 16 16"><path fill="currentColor" fill-rule="evenodd" d="M8.429 2.746a.5.5 0 0 0-.858 0L1.58 12.743a.5.5 0 0 0 .429.757h11.984a.5.5 0 0 0 .43-.757zm-2.144-.77C7.06.68 8.939.68 9.715 1.975l5.993 9.996c.799 1.333-.161 3.028-1.716 3.028H2.008C.453 15-.507 13.305.292 11.972l5.993-9.997ZM9 11.5a1 1 0 1 1-2 0a1 1 0 0 1 2 0m-.25-5.75a.75.75 0 0 0-1.5 0v3a.75.75 0 0 0 1.5 0z" clip-rule="evenodd"/></svg><span style="font-weight:600"> '.i18n_r('UpgradeCE/lang_Note').':</span></h4>
 			<ul class="w3-ul">
-				<li><p>'.i18n_r('UpgradeCE/lang_Requirement') .'</p></li>
-				<li><p>'.i18n_r('UpgradeCE/lang_Create_Backup') .'</p></li>
-				<li><p>'.i18n_r('UpgradeCE/lang_Themes_Overwritten') .'</p></li>
+				<li><p>'.i18n_r('UpgradeCE/lang_Requirement').'</p></li>
+				<li><p>'.i18n_r('UpgradeCE/lang_Create_Backup').'</p></li>
+				<li><p>'.i18n_r('UpgradeCE/lang_Themes_Overwritten').'</p></li>
 			</ul>
 		</div>
 		<hr>
@@ -107,15 +107,15 @@ function downloader() {
 				</div>
 				
 				<div class="w3-container">
-					<h4 class="w3-margin-top">'.i18n_r('UpgradeCE/lang_Key_Changes') .':</h4>
+					<h4 class="w3-margin-top">'.i18n_r('UpgradeCE/lang_Key_Changes').':</h4>
 					<div style="margin:32px 32px 0 32px !important">
 						<p><svg xmlns="http://www.w3.org/2000/svg" class="w3-text-green" style="vertical-align:middle" width="1.5em" height="1.5em" viewBox="0 0 24 24"><path fill="currentColor" d="m8.6 22.5l-1.9-3.2l-3.6-.8l.35-3.7L1 12l2.45-2.8l-.35-3.7l3.6-.8l1.9-3.2L12 2.95l3.4-1.45l1.9 3.2l3.6.8l-.35 3.7L23 12l-2.45 2.8l.35 3.7l-3.6.8l-1.9 3.2l-3.4-1.45zm2.35-6.95L16.6 9.9l-1.4-1.45l-4.25 4.25l-2.15-2.1L7.4 12z"/></svg> <b>'.i18n_r('UpgradeCE/lang_New').':</b> ' . $value->new . '</p>
 						
-						<p class="updates"><svg xmlns="http://www.w3.org/2000/svg" class="w3-text-indigo" style="vertical-align:middle" width="1.5em" height="1.5em" viewBox="0 0 36 36"><path fill="currentColor" d="M19.5 28.1h-2.9c-.5 0-.9-.3-1-.8l-.5-1.8l-.4-.2l-1.6.9c-.4.2-.9.2-1.2-.2l-2.1-2.1c-.3-.3-.4-.8-.2-1.2l.9-1.6l-.2-.4l-1.8-.5c-.4-.1-.8-.5-.8-1v-2.9c0-.5.3-.9.8-1l1.8-.5l.2-.4l-.9-1.6c-.2-.4-.2-.9.2-1.2l2.1-2.1c.3-.3.8-.4 1.2-.2l1.6.9l.4-.2l.5-1.8c.1-.4.5-.8 1-.8h2.9c.5 0 .9.3 1 .8L21 10l.4.2l1.6-.9c.4-.2.9-.2 1.2.2l2.1 2.1c.3.3.4.8.2 1.2l-.9 1.6l.2.4l1.8.5c.4.1.8.5.8 1v2.9c0 .5-.3.9-.8 1l-1.8.5l-.2.4l.9 1.6c.2.4.2.9-.2 1.2L24.2 26c-.3.3-.8.4-1.2.2l-1.6-.9l-.4.2l-.5 1.8c-.2.5-.6.8-1 .8m-2.2-2h1.4l.5-2.1l.5-.2c.4-.1.7-.3 1.1-.4l.5-.3l1.9 1.1l1-1l-1.1-1.9l.3-.5c.2-.3.3-.7.4-1.1l.2-.5l2.1-.5v-1.4l-2.1-.5l-.2-.5c-.1-.4-.3-.7-.4-1.1l-.3-.5l1.1-1.9l-1-1l-1.9 1.1l-.5-.3c-.3-.2-.7-.3-1.1-.4l-.5-.2l-.5-2.1h-1.4l-.5 2.1l-.5.2c-.4.1-.7.3-1.1.4l-.5.3l-1.9-1.1l-1 1l1.1 1.9l-.3.5c-.2.3-.3.7-.4 1.1l-.2.5l-2.1.5v1.4l2.1.5l.2.5c.1.4.3.7.4 1.1l.3.5l-1.1 1.9l1 1l1.9-1.1l.5.3c.3.2.7.3 1.1.4l.5.2zm9.8-6.6"/><path fill="currentColor" d="M18 22.3c-2.4 0-4.3-1.9-4.3-4.3s1.9-4.3 4.3-4.3s4.3 1.9 4.3 4.3s-1.9 4.3-4.3 4.3m0-6.6c-1.3 0-2.3 1-2.3 2.3s1 2.3 2.3 2.3s2.3-1 2.3-2.3s-1-2.3-2.3-2.3"/><path fill="currentColor" d="M18 2c-.6 0-1 .4-1 1s.4 1 1 1c7.7 0 14 6.3 14 14s-6.3 14-14 14S4 25.7 4 18c0-2.8.8-5.5 2.4-7.8v1.2c0 .6.4 1 1 1s1-.4 1-1v-5h-5c-.6 0-1 .4-1 1s.4 1 1 1h1.8C3.1 11.1 2 14.5 2 18c0 8.8 7.2 16 16 16s16-7.2 16-16S26.8 2 18 2"/><path fill="none" d="M0 0h36v36H0z"/></svg> <b>'.i18n_r('UpgradeCE/lang_Updated') .':</b> ' . $value->updates. '</p>
+						<p class="updates"><svg xmlns="http://www.w3.org/2000/svg" class="w3-text-indigo" style="vertical-align:middle" width="1.5em" height="1.5em" viewBox="0 0 36 36"><path fill="currentColor" d="M19.5 28.1h-2.9c-.5 0-.9-.3-1-.8l-.5-1.8l-.4-.2l-1.6.9c-.4.2-.9.2-1.2-.2l-2.1-2.1c-.3-.3-.4-.8-.2-1.2l.9-1.6l-.2-.4l-1.8-.5c-.4-.1-.8-.5-.8-1v-2.9c0-.5.3-.9.8-1l1.8-.5l.2-.4l-.9-1.6c-.2-.4-.2-.9.2-1.2l2.1-2.1c.3-.3.8-.4 1.2-.2l1.6.9l.4-.2l.5-1.8c.1-.4.5-.8 1-.8h2.9c.5 0 .9.3 1 .8L21 10l.4.2l1.6-.9c.4-.2.9-.2 1.2.2l2.1 2.1c.3.3.4.8.2 1.2l-.9 1.6l.2.4l1.8.5c.4.1.8.5.8 1v2.9c0 .5-.3.9-.8 1l-1.8.5l-.2.4l.9 1.6c.2.4.2.9-.2 1.2L24.2 26c-.3.3-.8.4-1.2.2l-1.6-.9l-.4.2l-.5 1.8c-.2.5-.6.8-1 .8m-2.2-2h1.4l.5-2.1l.5-.2c.4-.1.7-.3 1.1-.4l.5-.3l1.9 1.1l1-1l-1.1-1.9l.3-.5c.2-.3.3-.7.4-1.1l.2-.5l2.1-.5v-1.4l-2.1-.5l-.2-.5c-.1-.4-.3-.7-.4-1.1l-.3-.5l1.1-1.9l-1-1l-1.9 1.1l-.5-.3c-.3-.2-.7-.3-1.1-.4l-.5-.2l-.5-2.1h-1.4l-.5 2.1l-.5.2c-.4.1-.7.3-1.1.4l-.5.3l-1.9-1.1l-1 1l1.1 1.9l-.3.5c-.2.3-.3.7-.4 1.1l-.2.5l-2.1.5v1.4l2.1.5l.2.5c.1.4.3.7.4 1.1l.3.5l-1.1 1.9l1 1l1.9-1.1l.5.3c.3.2.7.3 1.1.4l.5.2zm9.8-6.6"/><path fill="currentColor" d="M18 22.3c-2.4 0-4.3-1.9-4.3-4.3s1.9-4.3 4.3-4.3s4.3 1.9 4.3 4.3s-1.9 4.3-4.3 4.3m0-6.6c-1.3 0-2.3 1-2.3 2.3s1 2.3 2.3 2.3s2.3-1 2.3-2.3s-1-2.3-2.3-2.3"/><path fill="currentColor" d="M18 2c-.6 0-1 .4-1 1s.4 1 1 1c7.7 0 14 6.3 14 14s-6.3 14-14 14S4 25.7 4 18c0-2.8.8-5.5 2.4-7.8v1.2c0 .6.4 1 1 1s1-.4 1-1v-5h-5c-.6 0-1 .4-1 1s.4 1 1 1h1.8C3.1 11.1 2 14.5 2 18c0 8.8 7.2 16 16 16s16-7.2 16-16S26.8 2 18 2"/><path fill="none" d="M0 0h36v36H0z"/></svg> <b>'.i18n_r('UpgradeCE/lang_Updated').':</b> ' . $value->updates. '</p>
 						
-						<p><svg xmlns="http://www.w3.org/2000/svg" class="w3-text-deep-orange" style="vertical-align:middle" width="1.5em" height="1.5em" viewBox="0 0 256 256"><path fill="currentColor" d="M240 116h-20.78A92.21 92.21 0 0 0 140 36.78V16a12 12 0 0 0-24 0v20.78A92.21 92.21 0 0 0 36.78 116H16a12 12 0 0 0 0 24h20.78A92.21 92.21 0 0 0 116 219.22V240a12 12 0 0 0 24 0v-20.78A92.21 92.21 0 0 0 219.22 140H240a12 12 0 0 0 0-24m-112 80a68 68 0 1 1 68-68a68.07 68.07 0 0 1-68 68m0-112a44 44 0 1 0 44 44a44.05 44.05 0 0 0-44-44m0 64a20 20 0 1 1 20-20a20 20 0 0 1-20 20"/></svg> <b>'.i18n_r('UpgradeCE/lang_Fixes') .':</b> ' . $value->fixed. '</p>
+						<p><svg xmlns="http://www.w3.org/2000/svg" class="w3-text-deep-orange" style="vertical-align:middle" width="1.5em" height="1.5em" viewBox="0 0 256 256"><path fill="currentColor" d="M240 116h-20.78A92.21 92.21 0 0 0 140 36.78V16a12 12 0 0 0-24 0v20.78A92.21 92.21 0 0 0 36.78 116H16a12 12 0 0 0 0 24h20.78A92.21 92.21 0 0 0 116 219.22V240a12 12 0 0 0 24 0v-20.78A92.21 92.21 0 0 0 219.22 140H240a12 12 0 0 0 0-24m-112 80a68 68 0 1 1 68-68a68.07 68.07 0 0 1-68 68m0-112a44 44 0 1 0 44 44a44.05 44.05 0 0 0-44-44m0 64a20 20 0 1 1 20-20a20 20 0 0 1-20 20"/></svg> <b>'.i18n_r('UpgradeCE/lang_Fixes').':</b> ' . $value->fixed. '</p>
 						
-						<p><svg xmlns="http://www.w3.org/2000/svg" class="w3-text-red" style="vertical-align:middle" width="1.5em" height="1.5em" viewBox="0 0 24 24"><path fill="currentColor" d="M14.48 18.71a3.996 3.996 0 0 1-5.163-5.272l2.619 2.619l2.12-2.121l-2.618-2.619a3.988 3.988 0 0 1 5.2 5.308l1.933 1.933A7.96 7.96 0 0 0 20 14A17.11 17.11 0 0 0 13.5.67a21.5 21.5 0 0 1 .74 4.8a3.47 3.47 0 0 1-3.41 3.73A3.64 3.64 0 0 1 7.2 5.47l.03-.36A13.77 13.77 0 0 0 4 14a8 8 0 0 0 12.43 6.66Z"/></svg> <b>'.i18n_r('UpgradeCE/lang_Security') .':</b> ' . $value->security. '</p>
+						<p><svg xmlns="http://www.w3.org/2000/svg" class="w3-text-red" style="vertical-align:middle" width="1.5em" height="1.5em" viewBox="0 0 24 24"><path fill="currentColor" d="M14.48 18.71a3.996 3.996 0 0 1-5.163-5.272l2.619 2.619l2.12-2.121l-2.618-2.619a3.988 3.988 0 0 1 5.2 5.308l1.933 1.933A7.96 7.96 0 0 0 20 14A17.11 17.11 0 0 0 13.5.67a21.5 21.5 0 0 1 .74 4.8a3.47 3.47 0 0 1-3.41 3.73A3.64 3.64 0 0 1 7.2 5.47l.03-.36A13.77 13.77 0 0 0 4 14a8 8 0 0 0 12.43 6.66Z"/></svg> <b>'.i18n_r('UpgradeCE/lang_Security').':</b> ' . $value->security. '</p>
 						<hr>
 						
 						<div class="w3-row">
